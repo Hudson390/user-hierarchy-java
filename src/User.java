@@ -1,11 +1,11 @@
-public class User {
-    private String name;
+public sealed class User permits Manager, Salesman, Attendant {
+    protected String name;
 
-    private String email;
+    protected String email;
 
-    private String password;
+    protected String password;
 
-    private boolean administrator = false;
+    protected boolean administrator = false;
 
     public String getName() {
         return name;
