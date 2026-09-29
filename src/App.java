@@ -37,8 +37,8 @@ public class App {
             int option = scanner.nextInt();
 
             switch (option) {
-                case 1 -> User.loginUser(manager);
-                case 2 -> User.loginUser(manager);
+                case 1 -> Manager.loginUser(manager);
+                case 2 -> User.loginUser(salesman);
                 case 3 -> User.loginUser(attendant);
                 case 0 -> System.exit(0);
         

@@ -10,5 +10,11 @@ public non-sealed class Salesman extends User {
         this.amountSales += amountSales;
     }
 
+    @Override
+    public void MenuUser() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'MenuUser'");
+    }
+
     
 }

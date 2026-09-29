@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public sealed class User permits Manager, Salesman, Attendant {
+public abstract sealed class User permits Manager, Salesman, Attendant {
     protected String name;
 
     protected String email;
@@ -51,12 +51,15 @@ public sealed class User permits Manager, Salesman, Attendant {
         System.out.println("Digite sua senha: ");
         String password = scanner.next();
 
-        if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+        if (email.equalsIgnoreCase(user.getEmail()) && password.equals(user.getPassword())) {
             System.out.println("Login realizado com sucesso!");
+            user.MenuUser();
         } else{
             System.out.println("Email ou Senha incorreta");
         }
 
     }
+
+    public abstract void MenuUser();
 
 }

@@ -8,5 +8,11 @@ public non-sealed class Attendant extends User{
     public void setCashOnHand(double cashOnHand) {
         this.cashOnHand = cashOnHand;
     }
-    
+
+    @Override
+    public void MenuUser() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'MenuUser'");
+    }
+
 }
