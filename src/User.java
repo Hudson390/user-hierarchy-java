@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public sealed class User permits Manager, Salesman, Attendant {
     protected String name;
 
@@ -37,8 +39,24 @@ public sealed class User permits Manager, Salesman, Attendant {
 
     public void setAdministrator(boolean administrator) {
         this.administrator = administrator;
-    }
+    }    
 
-    
+    public static void loginUser(User user){
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bem vindo " + user.name);
+        System.out.println("Digite seu email: ");
+        String email = scanner.next();
+        System.out.println("Digite sua senha: ");
+        String password = scanner.next();
+
+        if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+            System.out.println("Login realizado com sucesso!");
+        } else{
+            System.out.println("Email ou Senha incorreta");
+        }
+
+    }
 
 }

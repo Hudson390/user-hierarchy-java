@@ -7,7 +7,7 @@ public non-sealed class Salesman extends User {
     }
 
     public void setAmountSales(int amountSales) {
-        this.amountSales = amountSales;
+        this.amountSales += amountSales;
     }
 
     
