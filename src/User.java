@@ -8,6 +8,27 @@ public abstract sealed class User permits Manager, Salesman, Attendant {
     protected String password;
 
     protected boolean administrator = false;
+    
+    protected static int amountSales;
+
+    protected static  double cashOnHand;
+
+    public double getCashOnHand() {
+        return cashOnHand;
+    }
+
+    public void setCashOnHand(double cashOnHand) {
+        User.cashOnHand = cashOnHand;
+    }
+
+
+    public int getAmountSales() {
+        return amountSales;
+    }
+
+    public void setAmountSales(int amountSales) {
+        User.amountSales += amountSales;
+    }
 
     public String getName() {
         return name;
@@ -39,27 +60,49 @@ public abstract sealed class User permits Manager, Salesman, Attendant {
 
     public void setAdministrator(boolean administrator) {
         this.administrator = administrator;
-    }    
+    }
 
-    public static void loginUser(User user){
-
-        Scanner scanner = new Scanner(System.in);
+    public static void loginUser(User user) {
 
         System.out.println("Bem vindo " + user.name);
         System.out.println("Digite seu email: ");
-        String email = scanner.next();
+        String email = App.SCANNER.next();
         System.out.println("Digite sua senha: ");
-        String password = scanner.next();
+        String password = App.SCANNER.next();
 
         if (email.equalsIgnoreCase(user.getEmail()) && password.equals(user.getPassword())) {
             System.out.println("Login realizado com sucesso!");
             user.MenuUser();
-        } else{
+        } else {
             System.out.println("Email ou Senha incorreta");
         }
 
     }
 
     public abstract void MenuUser();
+
+    Scanner scanner = new Scanner(System.in);
+
+    public void changePassword() {
+        System.out.println("Digite a nova senha: ");
+        String newPassword = scanner.next();
+
+        this.setPassword(newPassword);
+
+        System.out.println("Alteração realizada com sucesso!");
+
+        MenuUser();
+    }
+
+    public void changeName() {
+        System.out.println("Digite o novo nome: ");
+        String newName = scanner.next();
+
+        this.setName(newName);
+
+        System.out.println("Alteração realizada com sucesso!");
+
+        MenuUser();
+    }
 
 }

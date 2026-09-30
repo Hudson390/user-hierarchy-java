@@ -1,15 +1,13 @@
-import java.util.Scanner;
 
 public non-sealed class Manager extends User {
-    
-    public Manager(){
+
+    public Manager() {
         this.administrator = true;
     }
 
-    @Override 
+    @Override
     public void MenuUser() {
-        Scanner scanner = new Scanner(System.in);
-        
+
         System.out.println("\n======= MENU =======");
         System.out.println("1 - GERAR RELATORIO");
         System.out.println("2 - CONSULTAR VENDAS");
@@ -18,23 +16,28 @@ public non-sealed class Manager extends User {
         System.out.println("0 - SAIR");
 
         System.out.print("\nDigite sua opção: ");
-        int option = scanner.nextInt();  
+        int option = App.SCANNER.nextInt();
 
         switch (option) {
-            case 4 -> {
-                System.out.println("Digite a nova senha: ");
-                String newPassword = scanner.next();
-
-                this.setPassword(newPassword);
-
-                System.out.println("Alteração realizada com sucesso!");
-
-                MenuUser();
-
+            case 1 -> this.generateFinancialReport();
+            case 2 -> this.checkSale();
+            case 3 -> this.changeName();
+            case 4 -> this.changePassword();
+            case 0 -> {
+                break;
             }
-            case 0 -> System.exit(0);
-        
+
         }
     }
-    
+
+    public void generateFinancialReport() {
+        System.out.println("Valor total em caixa: R$ " + User.cashOnHand);
+        MenuUser();
+    }
+
+    public void checkSale() {
+        System.out.println(User.amountSales + " Vendas realizadas.");
+        MenuUser();
+    }
+
 }
